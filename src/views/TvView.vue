@@ -1,9 +1,9 @@
 <template>
     <h1>Programas de TV</h1>
     <ul class="genre-list">
-      <li v-for="genre in genres" :key="genre.id" class="genre-item">
+      <!-- <li v-for="genre in genres" :key="genre.id" class="genre-item">
         {{ genre.name }}
-      </li>
+      </li> -->
     </ul>
   </template>
   

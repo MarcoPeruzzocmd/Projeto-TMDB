@@ -24,6 +24,7 @@
 import Loading from 'vue-loading-overlay';
 
 const isLoading = ref(false);
+
 function getGenreName(id) {
     const genero = genres.value.find((genre) => genre.id === id);
     return genero.name;
