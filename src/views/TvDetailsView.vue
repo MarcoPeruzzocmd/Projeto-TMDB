@@ -13,6 +13,9 @@ const props = defineProps({
 onMounted(async () => {
     await tvStore.gettvDetail(props.tvId);
 });
+const watchtv = (tv) => {
+  alert(`Assistindo o filme`);
+}
 </script>
 
 <template>
@@ -32,7 +35,7 @@ onMounted(async () => {
                 </div>
                 <div class="avaAss">
                     <p>Avaliação: {{ tvStore.currenttv.vote_average }}</p>
-                    <button>Assistir</button>
+                    <button @click="watchtv">Assistir</button>
                 </div>
                 <div class="companies">
                     <template v-for="company in tvStore.currenttv.production_companies" :key="company.id">
