@@ -1,11 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import api from '@/plugins/axios';
+import Loading from 'vue-loading-overlay';
 import { useGenreStore } from '@/stores/genre';
-const genreStore = useGenreStore();
-const genres = ref([]);
 import { useRouter } from 'vue-router'
 const router = useRouter()
+const genreStore = useGenreStore();
+
+function getGenreName(id) {
+  const genero = genres.value.find((genre) => genre.id === id);
+  return genero.name;
+}
+const isLoading = ref(false);
+const genres = ref([]);
 
 onMounted(async () => {
   isLoading.value = true;
@@ -26,30 +33,23 @@ const listMovies = async (genreId) => {
   movies.value = response.data.results;
   isLoading.value = false;
 };
-import Loading from 'vue-loading-overlay';
-
-const isLoading = ref(false);
-
-function getGenreName(id) {
-  const genero = genres.value.find((genre) => genre.id === id);
-  return genero.name;
-}
 const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
 function openMovie(movieId) {
   router.push({ name: 'MovieDetails', params: { movieId } });
 }
 </script>
-
-
 <template>
   <h1>Filmes</h1>
   <ul class="genre-list">
     <li v-for="genre in genreStore.genres" :key="genre.id" @click="listMovies(genre.id)" class="genre-item"
       :class="{ active: genre.id === genreStore.currentGenreId }">
+
       {{ genre.name }}
-    </li>
+
+    </li>>
   </ul>
   <loading v-model:active="isLoading" is-full-page />
+
   <div class="movie-list">
     <div v-for="movie in movies" :key="movie.id" class="movie-card">
 
@@ -68,9 +68,7 @@ function openMovie(movieId) {
 
     </div>
   </div>
-
 </template>
-
 <style scoped>
 .genre-list {
   display: flex;
@@ -78,7 +76,7 @@ function openMovie(movieId) {
   flex-wrap: wrap;
   gap: 2rem;
   list-style: none;
-  margin-bottom: 2rem;
+  padding: 0;
 }
 
 .genre-item {
@@ -124,6 +122,15 @@ function openMovie(movieId) {
   font-weight: bold;
   line-height: 1.3rem;
   height: 3.2rem;
+}
+
+.genre-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style: none;
+  margin-bottom: 2rem;
 }
 
 .movie-genres {
