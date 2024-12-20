@@ -16,7 +16,6 @@ onMounted(async () => {
 </script>
 
 <template>
-
   <div class="main">
     <div class="content">
       <div class="imagem">
