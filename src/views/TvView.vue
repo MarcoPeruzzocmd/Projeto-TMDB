@@ -47,13 +47,14 @@ const watchtv = (tv) => {
 
   <div class="tv-list">
     <div v-for="tv in tvs" :key="tv.id" class="tv-card">
-      <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" :alt="tv.name" @click="openTv(tv.id)" />
+      <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" :alt="tv.name"/>
       <div class="tv-details">
         <p class="tv-title"> {{ tv.name }}</p>
         <p class="tv-release-date">( {{ tv.first_air_date }} )</p>
       </div>
       <div class="button-assistir">
-        <button @click="watchtv">Assistir</button>
+        <button class="assistir-button" @click="watchtv">ASSISTIR</button>
+        <button class="detalhes-button"  @click="openTv(tv.id)">DETALHES</button>
       </div>
     </div>
   </div>
@@ -63,6 +64,7 @@ const watchtv = (tv) => {
 h1{
   text-align: center;
   margin: 50px;
+  color: white;
 }
 .genre-list {
   display: flex;
@@ -75,20 +77,21 @@ h1{
 }
 
 .genre-item {
-  background-color: #5d6424;
+  background-color: transparent;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   align-self: center;
   color: #fff;
   display: flex;
   justify-content: center;
-  border: none;
+  border: 1px solid;
 }
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #7d8a2e;
-  box-shadow: 0 0 0.5rem #5d6424;
+  background-color: white;
+  color: black;
+  transition: 500ms;
 }
 
 .tv-list {
@@ -100,7 +103,7 @@ h1{
 
 .tv-card {
   width: 15rem;
-  height: 30rem;
+  height: 31rem;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 0.5rem #000;
@@ -131,22 +134,42 @@ h1{
   text-align: center;
 }
 .button-assistir{
-  align-items: center;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  flex-direction: column;
 }
-.button-assistir > button{
+.assistir-button{
   width: 200px;
   height: 30px;
-  background-color: #837b7b25;
+  background-color: rgb(230, 36, 36);
   border: none;
   cursor: pointer;
   border-radius: 7px;
   font-size: 15px;
   font-weight: bold;
+  
 }
-.button-assistir > button:hover{
-  background-color: #22212125;
+
+.assistir-button:hover{  
+  background-color: rgb(138, 39, 39);
+}
+.detalhes-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 30px;
+  border-radius: 7px;
+  border: none;
+  background-color: orange;
+  font-weight: bold;
+  margin-top: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.detalhes-button:hover{
+  background-color: rgb(188, 128, 16);
 }
 </style>

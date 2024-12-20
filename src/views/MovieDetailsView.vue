@@ -67,21 +67,25 @@ onMounted(async () => {
 
 .details,
 p {
-  color: black;
+  color: white;
   font-weight: 900;
 }
 
 button {
   cursor: pointer;
-  width: 20%;
-  color: black;
-  background-color: white;
+  width: 200px;
+  color: white;
+  background-color: transparent;
   border-radius: 5px;
+  border: 1px solid;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .imagemFilme {

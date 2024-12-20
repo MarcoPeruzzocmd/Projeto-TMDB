@@ -6,8 +6,8 @@ export const useMovieStore = defineStore('movie', () => {
   const state = reactive({
     movies: [],  // Lista de filmes para o gênero selecionado
     favorites: [],  // Lista de filmes favoritos
-    loading: false,  // Estado para controlar o carregamento
-    error: null,  // Mensagem de erro
+    loading: false, 
+    error: null,  
   })
 
   const movies = computed(() => state.movies)

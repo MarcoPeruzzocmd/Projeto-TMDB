@@ -47,47 +47,51 @@ onMounted(async () => {
 </template>
 <style scoped>
 .companies {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .avaAss {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8%;
 }
 
 .content {
-    display: flex;
-    gap: 10px;
-    margin: 5%;
+  display: flex;
+  gap: 10px;
+  margin: 5%;
 }
 
 .details,
 p {
-    color: black;
-    font-weight: 900;
+  color: white;
+  font-weight: 900;
 }
 
 button {
-    cursor: pointer;
-    width: 20%;
-    color: black;
-    background-color: white;
-    border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  color: white;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+  background-color: white;
+  color: black;
 }
 
 .imagemFilme {
-    border: 2px Solid black;
-    border-radius: 10px;
+  border: 2px Solid black;
+  border-radius: 10px;
 }
 
 .resto {
-    margin: 20% 0 15%;
+  margin: 20% 0 15%;
 }
 </style>

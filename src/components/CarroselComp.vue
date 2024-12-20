@@ -21,6 +21,9 @@ const imagemAnterior = () => {
 onMounted(async () => {
   await movieStore.getMoreMovies()
 })
+const watchtv = (tv) => {
+  alert(`Assistindo o filme`);
+}
 </script>
 
 <template>
@@ -34,7 +37,7 @@ onMounted(async () => {
       <div class="content">
         <h1>{{ movieStore.movies[currentIndex]?.title }}</h1>
         <div class="buttons">
-          <button class="black-button">Assistir</button>
+          <button class="black-button" @click="watchtv">Assistir</button>
         </div>
       </div>
     </div>
@@ -73,7 +76,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 0.5s ease-in-out;
-  filter: blur(2.5px);
 }
 
 .sobrepor {
@@ -114,9 +116,14 @@ button {
 }
 
 .black-button {
+  background-color: transparent;
+  color: white;
+  border: solid 1px;
+}
+.black-button:hover{
   background-color: white;
   color: black;
-  border: none;
+  transition: 500ms;
 }
 
 .botao-anterior,

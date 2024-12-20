@@ -53,23 +53,25 @@ function openMovie(movieId) {
   <div class="movie-list">
     <div v-for="movie in movies" :key="movie.id" class="movie-card">
 
-      <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title"
-        @click="openMovie(movie.id)" />
+      <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title"/>
       <div class="movie-details">
         <p class="movie-title">{{ movie.title }}</p>
-        <p class="movie-release-date">{{ formatDate(movie.release_date) }}</p>
-        <p class="movie-genres">
-          <span v-for="genre_id in movie.genre_ids" :key="genre_id" @click="listMovies(genre_id)"
-            :class="{ active: genre_id === genreStore.currentGenreId }">
-            {{ genreStore.getGenreName(genre_id) }}
-          </span>
-        </p>
+        <p class="movie-release-date">( {{ formatDate(movie.release_date) }} )</p>
+        <p class="movie-genres"> </p>
       </div>
-
+      <div class="button-assistir">
+        <button class="assistir-button" @click="watchtv">ASSISTIR</button>
+        <button class="detalhes-button"  @click="openMovie(movie.id)" >DETALHES</button>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+h1{
+  text-align: center;
+  margin: 50px;
+  color: white;
+}
 .genre-list {
   display: flex;
   justify-content: center;
@@ -80,30 +82,37 @@ function openMovie(movieId) {
 }
 
 .genre-item {
-  background-color: #387250;
+  background-color: transparent;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
+  align-self: center;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
 }
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #4e9e5f;
-  box-shadow: 0 0 0.5rem #387250;
+  background-color: white;
+  color: black;
+  transition: 500ms;
 }
 
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3rem;
+  justify-content: center;
 }
 
 .movie-card {
   width: 15rem;
-  height: 30rem;
+  height: 31rem;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 0.5rem #000;
+  background-color: #d2d1d1;
 }
 
 .movie-card img {
@@ -122,8 +131,13 @@ function openMovie(movieId) {
   font-weight: bold;
   line-height: 1.3rem;
   height: 3.2rem;
+  text-align: center;
+  margin-top: 10px;
 }
+.movie-release-date{
+  text-align: center;
 
+}
 .genre-list {
   display: flex;
   justify-content: center;
@@ -132,39 +146,43 @@ function openMovie(movieId) {
   list-style: none;
   margin-bottom: 2rem;
 }
-
-.movie-genres {
+.button-assistir{
+  margin-top: 5px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
   justify-content: center;
-  gap: 0.2rem;
+  align-items: center;
+  flex-direction: column;
 }
-
-.movie-genres span {
-  background-color: #748708;
-  border-radius: 0.5rem;
-  padding: 0.2rem 0.5rem;
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.movie-genres span:hover {
+.assistir-button{
+  width: 200px;
+  height: 30px;
+  background-color: rgb(230, 36, 36);
+  border: none;
   cursor: pointer;
-  background-color: #455a08;
-  box-shadow: 0 0 0.5rem #748708;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: bold;
+  
 }
 
-.active {
-  background-color: #67b086;
-  font-weight: bolder;
+.assistir-button:hover{  
+  background-color: rgb(138, 39, 39);
 }
-
-.movie-genres span.active {
-  background-color: #abc322;
-  color: #000;
-  font-weight: bolder;
+.detalhes-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 30px;
+  border-radius: 7px;
+  border: none;
+  background-color: orange;
+  font-weight: bold;
+  margin-top: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.detalhes-button:hover{
+  background-color: rgb(188, 128, 16);
 }
 </style>
