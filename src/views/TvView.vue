@@ -27,7 +27,9 @@ onMounted(async () => {
 function openTv(tvId) {
   router.push({ name: 'TvDetails', params: { tvId } });
 }
-
+const watchtv = (tv) => {
+  alert(`Assistindo ${tv.name}`);
+}
 </script>
 
 <template>
@@ -47,15 +49,21 @@ function openTv(tvId) {
     <div v-for="tv in tvs" :key="tv.id" class="tv-card">
       <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" :alt="tv.name" @click="openTv(tv.id)" />
       <div class="tv-details">
-        <p class="tv-title">{{ tv.name }}</p>
-        <p class="tv-release-date">{{ tv.first_air_date }}</p>
-        <p class="tv-genres">{{ tv.genre_ids }}</p>
+        <p class="tv-title"> {{ tv.name }}</p>
+        <p class="tv-release-date">( {{ tv.first_air_date }} )</p>
+      </div>
+      <div class="button-assistir">
+        <button @click="watchtv">Assistir</button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+h1{
+  text-align: center;
+  margin: 50px;
+}
 .genre-list {
   display: flex;
   justify-content: center;
@@ -74,6 +82,7 @@ function openTv(tvId) {
   color: #fff;
   display: flex;
   justify-content: center;
+  border: none;
 }
 
 .genre-item:hover {
@@ -85,7 +94,8 @@ function openTv(tvId) {
 .tv-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3rem;
+  justify-content: center;
 }
 
 .tv-card {
@@ -94,6 +104,7 @@ function openTv(tvId) {
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 0.5rem #000;
+  background-color: #d2d1d1;
 }
 
 .tv-card img {
@@ -105,6 +116,7 @@ function openTv(tvId) {
 
 .tv-details {
   padding: 0 0.5rem;
+
 }
 
 .tv-title {
@@ -112,5 +124,29 @@ function openTv(tvId) {
   font-weight: bold;
   line-height: 1.3rem;
   height: 3.2rem;
+  text-align: center;
+  margin-top: 10px;
+}
+.tv-release-date{
+  text-align: center;
+}
+.button-assistir{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.button-assistir > button{
+  width: 200px;
+  height: 30px;
+  background-color: #837b7b25;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.button-assistir > button:hover{
+  background-color: #22212125;
 }
 </style>
