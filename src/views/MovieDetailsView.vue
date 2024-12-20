@@ -22,23 +22,23 @@ const watchtv = (tv) => {
   <div class="main">
     <div class="content">
       <div class="imagem">
-        <img class="imagemFilme" :src="`https://image.tmdb.org/t/p/w500${movieStore.currentMovie.poster_path}`"
-          :alt="movieStore.currentMovie.title" />
+        <img class="imagemFilme" :src="`https://image.tmdb.org/t/p/w500${movieStore.currentMovie?.poster_path}`"
+          :alt="movieStore.currentMovie?.title" />
       </div>
       <div class="details">
-        <h1 class="titulo">Filme: {{ movieStore.currentMovie.title }}</h1>
+        <h1 class="titulo">Filme: {{ movieStore.currentMovie?.title }}</h1>
         <div class="resto">
-          <p>{{ movieStore.currentMovie.tagline }}</p>
+          <p>{{ movieStore.currentMovie?.tagline }}</p>
           <h2>Descrição:</h2>
-          <p>{{ movieStore.currentMovie.overview }}</p>
-          <p>Orçamento: R${{ movieStore.currentMovie.budget }}</p>
+          <p>{{ movieStore.currentMovie?.overview }}</p>
+          <p>Orçamento: R${{ movieStore.currentMovie?.budget }}</p>
         </div>
         <div class="avaAss">
-          <p>Avaliação: {{ movieStore.currentMovie.vote_average }}</p>
+          <p>Avaliação: {{ movieStore.currentMovie?.vote_average }}</p>
           <button @click="watchtv">Assistir</button>
         </div>
         <div class="companies">
-          <template v-for="company in movieStore.currentMovie.production_companies" :key="company.id">
+          <template v-for="company in movieStore.currentMovie?.production_companies" :key="company.id">
             <img v-if="company.logo_path" :src="`https://image.tmdb.org/t/p/w92${company.logo_path}`"
               :alt="company.name" />
             <p v-else>{{ company.name }}</p>
