@@ -2,20 +2,18 @@
 import { defineProps, onMounted } from 'vue';
 import { useMovieStore } from '@/stores/movie';
 const movieStore = useMovieStore();
-
-const props = defineProps({
-  movieId: {
-    type: Number,
-    required: true,
-  },
-});
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 onMounted(async () => {
-  await movieStore.getMovieDetail(props.movieId);
+  const id = route.params.movieId
+  await movieStore.getMovieDetail(id);
 });
+
 const watchtv = (tv) => {
   alert(`Assistindo o filme`);
 }
+
 </script>
 
 <template>
